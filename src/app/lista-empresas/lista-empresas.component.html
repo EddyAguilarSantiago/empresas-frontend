@@ -1,1 +1,19 @@
-<p>lista-empresas works!</p>
+<h2>Lista de Empresas</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Código Postal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empresa of empresas">
+            <td>{{ empresa.codigo }}</td>
+            <td>{{ empresa.nombre }}</td>
+            <td>{{ empresa.direccion }}</td>
+            <td>{{ empresa.cp }}</td>
+        </tr>
+    </tbody>
+</table>
