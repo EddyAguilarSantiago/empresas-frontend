@@ -32,4 +32,9 @@ export class EmpresaService {
   actualizarEmpresa(id: number, empresa:Empresa):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`, empresa);
   }
+
+  //Método para eliminar empresa
+  eliminarEmpresa(id: number):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
 }

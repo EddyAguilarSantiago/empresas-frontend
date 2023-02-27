@@ -12,14 +12,14 @@ export class ListaEmpresasComponent implements OnInit {
 
   empresas:Empresa[];
 
-  constructor(private empresaSerivce: EmpresaService, private router:Router) { }
+  constructor(private empresaService: EmpresaService, private router:Router) { }
 
   ngOnInit(): void {
     this.obtenerEmpresas();
   }
 
   private obtenerEmpresas(){
-    this.empresaSerivce.obtenerListaDeEmpresas().subscribe(dato => {
+    this.empresaService.obtenerListaDeEmpresas().subscribe(dato => {
       this.empresas = dato;
     });
   }
@@ -30,5 +30,11 @@ export class ListaEmpresasComponent implements OnInit {
 
   verDetallesDeEmpresa(id:number){
     this.router.navigate(['detalles-empresa', id]);
+  }
+
+  eliminarEmpresa(id:number){
+    this.empresaService.eliminarEmpresa(id).subscribe(dato => {
+      this.obtenerEmpresas();
+    })
   }
 }
