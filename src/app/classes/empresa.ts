@@ -1,9 +1,9 @@
 export class Empresa {
     
     id: number;
-    codigo: number;
+    codigo: string;
     nombre:string;
     direccion:string;
-    cp:number;
+    cp:string;
 
 }

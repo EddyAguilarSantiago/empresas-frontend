@@ -1,23 +1,40 @@
 <div class="container mw-500 border p-4 mt-4 mb-4 target">
     <h3 class="text-center mb-4">Detalles de la Empresa</h3>
-    <div>
-        <div class="mb-2">
-            <label><b>ID: </b>{{ empresa.id }}</label>
-        </div>
-        <div class="mb-2">
-            <label><b>Código: </b>{{ empresa.codigo }}</label>
-        </div>
-        <div class="mb-2">
-            <label><b>Nombre: </b>{{ empresa.nombre }}</label>
-        </div>
-        <div class="mb-2">
-            <label><b>Dirección: </b>{{ empresa.direccion }}</label>
-        </div>
-        <div>
-            <label><b>Código Postal: </b>{{ empresa.cp }}</label>
-        </div>
-        <div class="d-flex justify-content-center mt-5">
-            <a routerLink="/actualizar-empresa/{{empresa.id}}" class="btn btn-primary">Editar empresa</a>
+
+    <!-- Si ocurre algún error -->
+    <div *ngFor="let error of errors">
+        <div class="alert alert-danger" *ngIf="error!=null" role="alert">
+            {{ error }}
         </div>
     </div>
+
+    <!-- Si no hay empresas registradas -->
+    <div *ngIf="empresa.id==null">
+        No existe ninguna empresa con el id <strong>{{ id }}</strong>
+    </div>
+    <!-- En caso de que si haya -->
+    <div *ngIf="empresa.id==null; else elseBlock"></div>
+    <!-- Para cada empresa registrada -->
+    <ng-template #elseBlock>
+        <div>
+            <div class="mb-2">
+                <label><b>ID: </b>{{ empresa.id }}</label>
+            </div>
+            <div class="mb-2">
+                <label><b>Código: </b>{{ empresa.codigo }}</label>
+            </div>
+            <div class="mb-2">
+                <label><b>Nombre: </b>{{ empresa.nombre }}</label>
+            </div>
+            <div class="mb-2">
+                <label><b>Dirección: </b>{{ empresa.direccion }}</label>
+            </div>
+            <div>
+                <label><b>Código Postal: </b>{{ empresa.cp }}</label>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <a routerLink="/actualizar-empresa/{{empresa.id}}" class="btn btn-primary">Editar empresa</a>
+            </div>
+        </div>
+    </ng-template>
 </div>

@@ -12,15 +12,22 @@ export class DetallesEmpresaComponent implements OnInit {
 
   id:number;
   empresa:Empresa;
+  errors=[];
 
   constructor(private route:ActivatedRoute, private empresaService:EmpresaService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.empresa = new Empresa();
-    this.empresaService.obtenerEmpresaPorId(this.id).subscribe(dato => {
-      this.empresa = dato;
-    });
+    this.empresaService.obtenerEmpresaPorId(this.id).subscribe(empresa => {
+      this.empresa = empresa;
+    }, error => this.errors.push(error.message));
+    
+
+    //Vaciamos la variable errors luego de 5 segundos
+    setTimeout(() => {
+      this.errors=[];
+    }, 5000);
   }
 
 }

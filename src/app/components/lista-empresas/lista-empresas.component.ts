@@ -12,6 +12,8 @@ import { EmpresaService } from '../../services/empresa.service';
 export class ListaEmpresasComponent implements OnInit {
 
   empresas:Empresa[];
+  numEmpresas;
+  errors=[];
 
   constructor(private empresaService: EmpresaService, private router:Router) { }
 
@@ -20,9 +22,15 @@ export class ListaEmpresasComponent implements OnInit {
   }
 
   private obtenerEmpresas(){
-    this.empresaService.obtenerListaDeEmpresas().subscribe(dato => {
-      this.empresas = dato;
-    });
+    this.empresaService.obtenerListaDeEmpresas().subscribe(empresa => {
+      this.empresas = empresa;
+      this.numEmpresas=this.empresas.length;
+    }, error => this.errors.push(error.message));
+
+    //Vaciamos la variable errors luego de 5 segundos
+    setTimeout(() => {
+      this.errors=[];
+    }, 5000);
   }
 
   actualizarEmpresa(id:number){
@@ -49,7 +57,7 @@ export class ListaEmpresasComponent implements OnInit {
       buttonsStyling: true
     }).then((result) => {
       if(result.value){
-        this.empresaService.eliminarEmpresa(id).subscribe(dato => {
+        this.empresaService.eliminarEmpresa(id).subscribe(empresa => {
           this.obtenerEmpresas();
           swal(
             'Empresa eliminada',

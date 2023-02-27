@@ -1,7 +1,21 @@
 <div class="container p-4 border mt-4 mb-4 products target">
     <h3 class="text-center mb-5">Lista de Empresas</h3>
-    <div>
-        <!-- Para cada empresa registrada -->
+
+    <!-- Si ocurre algún error -->
+    <div *ngFor="let error of errors">
+        <div class="alert alert-danger" *ngIf="error!=null" role="alert">
+            {{ error }}
+        </div>
+    </div>
+
+    <!-- Si no hay empresas registradas -->
+    <div *ngIf="numEmpresas==0">
+        No hay ninguna empresa registrada
+    </div>
+    <!-- En caso de que si haya -->
+    <div *ngIf="numEmpresas==0; else elseBlock"></div>
+    <!-- Para cada empresa registrada -->
+    <ng-template #elseBlock>
         <div class="row pr-2 mb-4 border target-elements" *ngFor="let empresa of empresas">
             <div class="col-sm-1 d-flex align-items-center mb-2">
                 <a routerLink="/detalles-empresa/{{ empresa.id }}">{{ empresa.codigo }}</a>
@@ -19,8 +33,8 @@
                 <button (click)="eliminarEmpresa(empresa.id)" class="btn btn-danger">Eliminar</button>
             </div>
         </div>
-        <div class="d-flex justify-content-center mt-5">
-            <a routerLink="/registrar-empresa" class="btn btn-primary">Añadir empresa</a>
-        </div>
+    </ng-template>
+    <div class="d-flex justify-content-center mt-5">
+        <a routerLink="/registrar-empresa" class="btn btn-primary">Añadir empresa</a>
     </div>
 </div>

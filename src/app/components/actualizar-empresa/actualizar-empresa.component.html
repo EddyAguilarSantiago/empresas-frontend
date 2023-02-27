@@ -1,22 +1,35 @@
 <div class="container mw-500 border p-4 mt-4 mb-4 target">
     <h3 class="text-center mb-4">Edición de empresa</h3>
+
+    <!-- Si sale bien el registro -->
+    <div class="alert alert-success" *ngIf="success!=null" role="alert">
+        {{ success }}
+    </div>
+    
+    <!-- Si ocurre algún error -->
+    <div *ngFor="let error of errors">
+        <div class="alert alert-danger" *ngIf="error!=null" role="alert">
+            {{ error }}
+        </div>
+    </div>
+
     <form (ngSubmit)="onSubmit()" #empresaForm="ngForm">
         <div class="form-floating mb-2">
-            <input type="number" class="form-control" id="codigo" name="codigo" [(ngModel)]="empresa.codigo"
-            required placeholder="Codigo" [maxLength]="3" minlength="3" maxlength="3" #codigo="ngModel" disabled="disabled">
+            <input type="text" class="form-control" id="codigo" name="codigo" [(ngModel)]="empresa.codigo"
+            required placeholder="Codigo" [maxLength]="3" minlength="3" maxlength="3" pattern="[0-9]+" #codigo="ngModel">
             <label for="codigo">Codigo</label>
 
             <!-- Mensajes de error en el código -->
-            <div class="alert alert-danger mt-1" *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
-                <div *ngIf = "codigo.errors.required">
-                    Por favor escriba el código de la empresa
-                </div>
-                <div *ngIf = "codigo.errors.minlength">
+            <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.minlength">
                     El código de la empresa debe ser de 3 dígitos
-                </div>
-                <div *ngIf = "codigo.errors.maxlength">
+                </h6>
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.maxlength">
                     El código de la empresa debe ser de 3 dígitos
-                </div>
+                </h6>
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.pattern">
+                    El código de la empresa sólo debe tener números
+                </h6>
             </div>
         </div>
 
@@ -26,16 +39,13 @@
             <label for="nombre">Nombre</label>
 
             <!-- Mensajes de error en el nombre -->
-            <div class="alert alert-danger mt-1" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-                <div *ngIf = "nombre.errors.required">
-                    Por favor escriba el nombre de la empresa
-                </div>
-                <div *ngIf = "nombre.errors.minlength">
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "nombre.errors.minlength">
                     El nombre de la empresa debe ser de al menos 3 caracteres
-                </div>
-                <div *ngIf = "nombre.errors.maxlength">
+                </h6>
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "nombre.errors.maxlength">
                     El nombre de la empresa debe tener un máximo de 50 caracteres
-                </div>
+                </h6>
             </div>
         </div>
 
@@ -45,39 +55,37 @@
             <label for="direccion">Dirección</label>
 
             <!-- Mensajes de error en la dirección -->
-            <div class="alert alert-danger mt-1" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
-                <div *ngIf = "direccion.errors.required">
-                    Por favor escriba la dirección de la empresa
-                </div>
-                <div *ngIf = "direccion.errors.minlength">
+            <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "direccion.errors.minlength">
                     La dirección de la empresa debe ser de al menos 3 caracteres
-                </div>
-                <div *ngIf = "direccion.errors.maxlength">
+                </h6>
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "direccion.errors.maxlength">
                     La dirección de la empresa debe tener un máximo de 70 caracteres
-                </div>
+                </h6>
             </div>
         </div>
 
         <div class="form-floating mb-2">
-            <input type="number" class="form-control" id="cp" name="cp" [(ngModel)]="empresa.cp"
-            required placeholder="Codigo Postal" minlength="5" maxlength="5" #cp="ngModel">
+            <input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="empresa.cp"
+            required placeholder="Codigo Postal" minlength="5" maxlength="5" pattern="[0-9]+" #cp="ngModel">
             <label for="cp">Codigo Postal</label>
 
             <!-- Mensajes de error en el código -->
-            <div class="alert alert-danger mt-1" *ngIf="cp.invalid && (cp.dirty || cp.touched)">
-                <div *ngIf = "cp.errors.required">
-                    Por favor escriba el código postal de la empresa
-                </div>
-                <div *ngIf = "cp.errors.minlength">
+            <div *ngIf="cp.invalid && (cp.dirty || cp.touched)">
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "cp.errors.minlength">
                     El código postal de la empresa debe ser de 5 dígitos
-                </div>
-                <div *ngIf = "cp.errors.maxlength">
+                </h6>
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "cp.errors.maxlength">
                     El código postal de la empresa debe ser de 5 dígitos
-                </div>
+                </h6>
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "cp.errors.pattern">
+                    El código postal de la empresa sólo debe tener números
+                </h6>
             </div>
         </div>
         <div class="d-flex justify-content-center mt-5">
-            <button class="btn btn-success" [disabled]="!empresaForm.form.valid">actualizar empresa</button>
+            <button class="btn btn-success">Actualizar empresa</button>
+            <!-- <button class="btn btn-success" [disabled]="!empresaForm.form.valid">Registrar empresa</button> -->
         </div>
     </form>
 </div>
