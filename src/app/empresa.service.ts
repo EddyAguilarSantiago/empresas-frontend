@@ -22,4 +22,9 @@ export class EmpresaService {
   registrarEmpresa(empresa: Empresa):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`, empresa);
   }
+
+  //Método para buscar empresa
+  obtenerEmpresaPorId(id:number):Observable<Empresa>{
+    return this.httpClient.get<Empresa>(`${this.baseURL}/${id}`);
+  }
 }
