@@ -1,22 +1,82 @@
 <div class="col-md-6 offset-md-3">
     <h3 class="text-center">Registro de empresa</h3>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" #empresaForm="ngForm">
         <div class="form-group">
             <label for="codigo">Codigo:</label>
-            <input type="number" class="form-control" id="codigo" name="codigo" [(ngModel)]="empresa.codigo">
+            <input type="number" class="form-control" id="codigo" name="codigo" [(ngModel)]="empresa.codigo"
+            required placeholder="Digite el código de la empresa" [maxLength]="3" minlength="3" maxlength="3" #codigo="ngModel">
+
+            <!-- Mensajes de error en el código -->
+            <div class="alert alert-danger" *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+                <div *ngIf = "codigo.errors.required">
+                    Por favor escriba el código de la empresa
+                </div>
+                <div *ngIf = "codigo.errors.minlength">
+                    El código de la empresa debe ser de 3 dígitos
+                </div>
+                <div *ngIf = "codigo.errors.maxlength">
+                    El código de la empresa debe ser de 3 dígitos
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
             <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="empresa.nombre">
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="empresa.nombre"
+            required placeholder="Digite el nombre de la empresa" minlength="3" maxlength="50" #nombre="ngModel">
+
+            <!-- Mensajes de error en el nombre -->
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf = "nombre.errors.required">
+                    Por favor escriba el nombre de la empresa
+                </div>
+                <div *ngIf = "nombre.errors.minlength">
+                    El nombre de la empresa debe ser de al menos 3 caracteres
+                </div>
+                <div *ngIf = "nombre.errors.maxlength">
+                    El nombre de la empresa debe tener un máximo de 50 caracteres
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
             <label for="direccion">Dirección:</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="empresa.direccion">
+            <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="empresa.direccion"
+            required placeholder="Digite la dirección de la empresa" minlength="3" maxlength="70" #direccion="ngModel">
+
+            <!-- Mensajes de error en la dirección -->
+            <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                <div *ngIf = "direccion.errors.required">
+                    Por favor escriba la dirección de la empresa
+                </div>
+                <div *ngIf = "direccion.errors.minlength">
+                    La dirección de la empresa debe ser de al menos 3 caracteres
+                </div>
+                <div *ngIf = "direccion.errors.maxlength">
+                    La dirección de la empresa debe tener un máximo de 70 caracteres
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
             <label for="cp">Codigo Postal:</label>
-            <input type="number" class="form-control" id="cp" name="cp" [(ngModel)]="empresa.cp">
+            <input type="number" class="form-control" id="cp" name="cp" [(ngModel)]="empresa.cp"
+            required placeholder="Digite el código postal de la empresa" minlength="5" maxlength="5" #cp="ngModel">
+
+            <!-- Mensajes de error en el código -->
+            <div class="alert alert-danger" *ngIf="cp.invalid && (cp.dirty || cp.touched)">
+                <div *ngIf = "cp.errors.required">
+                    Por favor escriba el código postal de la empresa
+                </div>
+                <div *ngIf = "cp.errors.minlength">
+                    El código postal de la empresa debe ser de 5 dígitos
+                </div>
+                <div *ngIf = "cp.errors.maxlength">
+                    El código postal de la empresa debe ser de 5 dígitos
+                </div>
+            </div>
         </div>
-        <button class="btn btn-success">Guardar</button>
+
+        <button class="btn btn-success" [disabled]="!empresaForm.form.valid">Guardar</button>
     </form>
 </div>
