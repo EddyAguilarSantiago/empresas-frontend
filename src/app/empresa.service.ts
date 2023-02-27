@@ -17,4 +17,9 @@ export class EmpresaService {
   obtenerListaDeEmpresas():Observable<Empresa[]>{
     return this.httpClient.get<Empresa[]>(`${this.baseURL}`);
   }
+
+  //Método para registrar empresa
+  registrarEmpresa(empresa: Empresa):Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}`, empresa);
+  }
 }
