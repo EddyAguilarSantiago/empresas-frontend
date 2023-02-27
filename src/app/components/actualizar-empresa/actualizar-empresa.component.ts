@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Empresa } from '../empresa';
-import { EmpresaService } from '../empresa.service';
+import { Empresa } from '../../classes/empresa';
+import { EmpresaService } from '../../services/empresa.service';
 
 @Component({
   selector: 'app-actualizar-empresa',
