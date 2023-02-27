@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ActualizarEmpresaComponent } from './components/actualizar-empresa/actualizar-empresa.component';
-import { DetallesEmpresaComponent } from './components/detalles-empresa/detalles-empresa.component';
-import { ListaEmpresasComponent } from './components/lista-empresas/lista-empresas.component';
-import { RegistrarEmpresaComponent } from './components/registrar-empresa/registrar-empresa.component';
+import { ActualizarEmpresaComponent } from './components/empresa/actualizar-empresa/actualizar-empresa.component';
+import { DetallesEmpresaComponent } from './components/empresa/detalles-empresa/detalles-empresa.component';
+import { ListaEmpresasComponent } from './components/empresa/lista-empresas/lista-empresas.component';
+import { RegistrarEmpresaComponent } from './components/empresa/registrar-empresa/registrar-empresa.component';
 
 const routes: Routes = [
   {path: 'empresas', component:ListaEmpresasComponent},

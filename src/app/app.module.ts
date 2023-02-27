@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListaEmpresasComponent } from './components/lista-empresas/lista-empresas.component';
+import { ListaEmpresasComponent } from './components/empresa/lista-empresas/lista-empresas.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RegistrarEmpresaComponent } from './components/registrar-empresa/registrar-empresa.component';
+import { RegistrarEmpresaComponent } from './components/empresa/registrar-empresa/registrar-empresa.component';
 import { FormsModule } from '@angular/forms';
-import { ActualizarEmpresaComponent } from './components/actualizar-empresa/actualizar-empresa.component';
-import { DetallesEmpresaComponent } from './components/detalles-empresa/detalles-empresa.component';
+import { ActualizarEmpresaComponent } from './components/empresa/actualizar-empresa/actualizar-empresa.component';
+import { DetallesEmpresaComponent } from './components/empresa/detalles-empresa/detalles-empresa.component';
 
 @NgModule({
   declarations: [

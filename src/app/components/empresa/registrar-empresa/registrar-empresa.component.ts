@@ -1,27 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Empresa } from '../../classes/empresa';
-import { EmpresaService } from '../../services/empresa.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { Empresa } from '../../../classes/empresa/empresa';
+import { EmpresaService } from '../../../services/empresa/empresa.service';
 
 @Component({
-  selector: 'app-actualizar-empresa',
-  templateUrl: './actualizar-empresa.component.html',
-  styleUrls: ['./actualizar-empresa.component.css']
+  selector: 'app-registrar-empresa',
+  templateUrl: './registrar-empresa.component.html',
+  styleUrls: ['./registrar-empresa.component.css']
 })
-export class ActualizarEmpresaComponent implements OnInit {
+export class RegistrarEmpresaComponent implements OnInit {
 
-  id:number;
-  empresa:Empresa = new Empresa();
+  empresa : Empresa = new Empresa();
   success:string;
   errors=[];
 
-  constructor(private empresaService:EmpresaService, private router:Router, private route:ActivatedRoute) { }
+  constructor(private empresaService:EmpresaService, private router:Router) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.empresaService.obtenerEmpresaPorId(this.id).subscribe(empresa => {
-      this.empresa = empresa;
-    }, error => console.log(error));
   }
 
   onSubmit(){
@@ -41,8 +36,8 @@ export class ActualizarEmpresaComponent implements OnInit {
 
     //Registramos la empresa
     if(this.errors.length == 0){
-      this.empresaService.actualizarEmpresa(this.id, this.empresa).subscribe(empresa => {
-        this.success="Empresa actualizada correctamente";
+      this.empresaService.registrarEmpresa(this.empresa).subscribe(empresa => {
+        this.success="Empresa registrada correctamente";
       }, error => this.errors.push(error.message));
     }
 
