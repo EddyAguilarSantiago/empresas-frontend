@@ -27,4 +27,9 @@ export class EmpresaService {
   obtenerEmpresaPorId(id:number):Observable<Empresa>{
     return this.httpClient.get<Empresa>(`${this.baseURL}/${id}`);
   }
+
+  //Método para actualizar empresa
+  actualizarEmpresa(id: number, empresa:Empresa):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/${id}`, empresa);
+  }
 }

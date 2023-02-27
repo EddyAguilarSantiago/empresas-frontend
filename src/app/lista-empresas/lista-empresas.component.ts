@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Empresa } from '../empresa';
 import { EmpresaService } from '../empresa.service';
 
@@ -11,7 +12,7 @@ export class ListaEmpresasComponent implements OnInit {
 
   empresas:Empresa[];
 
-  constructor(private empresaSerivce: EmpresaService) { }
+  constructor(private empresaSerivce: EmpresaService, private router:Router) { }
 
   ngOnInit(): void {
     this.obtenerEmpresas();
@@ -21,6 +22,10 @@ export class ListaEmpresasComponent implements OnInit {
     this.empresaSerivce.obtenerListaDeEmpresas().subscribe(dato => {
       this.empresas = dato;
     });
+  }
+
+  actualizarEmpresa(id:number){
+    this.router.navigate(['actualizar-empresa', id]);
   }
 
 }

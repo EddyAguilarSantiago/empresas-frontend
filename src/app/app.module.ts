@@ -7,12 +7,14 @@ import { ListaEmpresasComponent } from './lista-empresas/lista-empresas.componen
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa.component';
 import { FormsModule } from '@angular/forms';
+import { ActualizarEmpresaComponent } from './actualizar-empresa/actualizar-empresa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaEmpresasComponent,
-    RegistrarEmpresaComponent
+    RegistrarEmpresaComponent,
+    ActualizarEmpresaComponent
   ],
   imports: [
     BrowserModule,

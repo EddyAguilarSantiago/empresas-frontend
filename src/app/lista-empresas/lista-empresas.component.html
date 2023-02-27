@@ -6,6 +6,7 @@
             <th>Nombre</th>
             <th>Dirección</th>
             <th>Código Postal</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -14,6 +15,9 @@
             <td>{{ empresa.nombre }}</td>
             <td>{{ empresa.direccion }}</td>
             <td>{{ empresa.cp }}</td>
+            <td>
+                <button (click)="actualizarEmpresa(empresa.id)" class="btn btn-info">Editar</button>
+            </td>
         </tr>
     </tbody>
 </table>
