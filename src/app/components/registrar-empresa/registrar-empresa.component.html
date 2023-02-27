@@ -1,13 +1,13 @@
-<div class="col-md-6 offset-md-3">
-    <h3 class="text-center">Registro de empresa</h3>
+<div class="container mw-500 border p-4 mt-4 mb-4 target">
+    <h3 class="text-center mb-4">Registro de empresa</h3>
     <form (ngSubmit)="onSubmit()" #empresaForm="ngForm">
-        <div class="form-group">
-            <label for="codigo">Codigo:</label>
+        <div class="form-floating mb-2">
             <input type="number" class="form-control" id="codigo" name="codigo" [(ngModel)]="empresa.codigo"
-            required placeholder="Digite el código de la empresa" [maxLength]="3" minlength="3" maxlength="3" #codigo="ngModel">
+            required placeholder="Codigo" [maxLength]="3" minlength="3" maxlength="3" #codigo="ngModel">
+            <label for="codigo">Codigo</label>
 
             <!-- Mensajes de error en el código -->
-            <div class="alert alert-danger" *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+            <div class="alert alert-danger mt-1" *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
                 <div *ngIf = "codigo.errors.required">
                     Por favor escriba el código de la empresa
                 </div>
@@ -20,13 +20,13 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
+        <div class="form-floating mb-2">
             <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="empresa.nombre"
-            required placeholder="Digite el nombre de la empresa" minlength="3" maxlength="50" #nombre="ngModel">
+            required placeholder="Nombre" minlength="3" maxlength="50" #nombre="ngModel">
+            <label for="nombre">Nombre</label>
 
             <!-- Mensajes de error en el nombre -->
-            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div class="alert alert-danger mt-1" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                 <div *ngIf = "nombre.errors.required">
                     Por favor escriba el nombre de la empresa
                 </div>
@@ -39,13 +39,13 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="direccion">Dirección:</label>
+        <div class="form-floating mb-2">
             <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="empresa.direccion"
-            required placeholder="Digite la dirección de la empresa" minlength="3" maxlength="70" #direccion="ngModel">
+            required placeholder="Dirección" minlength="3" maxlength="70" #direccion="ngModel">
+            <label for="direccion">Dirección</label>
 
             <!-- Mensajes de error en la dirección -->
-            <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+            <div class="alert alert-danger mt-1" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
                 <div *ngIf = "direccion.errors.required">
                     Por favor escriba la dirección de la empresa
                 </div>
@@ -58,13 +58,13 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="cp">Codigo Postal:</label>
+        <div class="form-floating mb-2">
             <input type="number" class="form-control" id="cp" name="cp" [(ngModel)]="empresa.cp"
-            required placeholder="Digite el código postal de la empresa" minlength="5" maxlength="5" #cp="ngModel">
+            required placeholder="Codigo Postal" minlength="5" maxlength="5" #cp="ngModel">
+            <label for="cp">Codigo Postal</label>
 
             <!-- Mensajes de error en el código -->
-            <div class="alert alert-danger" *ngIf="cp.invalid && (cp.dirty || cp.touched)">
+            <div class="alert alert-danger mt-1" *ngIf="cp.invalid && (cp.dirty || cp.touched)">
                 <div *ngIf = "cp.errors.required">
                     Por favor escriba el código postal de la empresa
                 </div>
@@ -76,7 +76,8 @@
                 </div>
             </div>
         </div>
-
-        <button class="btn btn-success" [disabled]="!empresaForm.form.valid">Guardar</button>
+        <div class="d-flex justify-content-center mt-5">
+            <button class="btn btn-success" [disabled]="!empresaForm.form.valid">Registrar empresa</button>
+        </div>
     </form>
 </div>

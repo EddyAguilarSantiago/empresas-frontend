@@ -1,25 +1,26 @@
-<h2>Lista de Empresas</h2>
-<table class="table table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>Código</th>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Código Postal</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let empresa of empresas">
-            <td>{{ empresa.codigo }}</td>
-            <td>{{ empresa.nombre }}</td>
-            <td>{{ empresa.direccion }}</td>
-            <td>{{ empresa.cp }}</td>
-            <td>
-                <button (click)="actualizarEmpresa(empresa.id)" class="btn btn-info">Editar</button>
-                <button (click)="verDetallesDeEmpresa(empresa.id)" class="btn btn-primary" style="margin-left: 10px;">Detalles</button>
-                <button (click)="eliminarEmpresa(empresa.id)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container p-4 border mt-4 mb-4 products target">
+    <h3 class="text-center mb-5">Lista de Empresas</h3>
+    <div>
+        <!-- Para cada empresa registrada -->
+        <div class="row pr-2 mb-4 border target-elements" *ngFor="let empresa of empresas">
+            <div class="col-sm-1 d-flex align-items-center mb-2">
+                <a routerLink="/detalles-empresa/{{ empresa.id }}">{{ empresa.codigo }}</a>
+            </div>
+            <div class="col-sm-3 d-flex align-items-center mb-2">
+                <a routerLink="/actualizar-empresa/{{ empresa.id }}">{{ empresa.nombre }}</a>
+            </div>
+            <div class="col-sm-4 d-flex align-items-center mb-2">
+                {{ empresa.direccion }}
+            </div>
+            <div class="col-sm-2 d-flex align-items-center mb-2">
+                {{ empresa.cp }}
+            </div>
+            <div class="col-sm-2 d-flex align-items-center justify-content-center mt-4 mb-4">
+                <button (click)="eliminarEmpresa(empresa.id)" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-5">
+            <a routerLink="/registrar-empresa" class="btn btn-primary">Añadir empresa</a>
+        </div>
+    </div>
+</div>
