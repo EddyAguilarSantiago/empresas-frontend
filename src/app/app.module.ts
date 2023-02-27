@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa.component';
 import { FormsModule } from '@angular/forms';
 import { ActualizarEmpresaComponent } from './actualizar-empresa/actualizar-empresa.component';
+import { DetallesEmpresaComponent } from './detalles-empresa/detalles-empresa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaEmpresasComponent,
     RegistrarEmpresaComponent,
-    ActualizarEmpresaComponent
+    ActualizarEmpresaComponent,
+    DetallesEmpresaComponent
   ],
   imports: [
     BrowserModule,

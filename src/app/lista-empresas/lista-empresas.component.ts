@@ -28,4 +28,7 @@ export class ListaEmpresasComponent implements OnInit {
     this.router.navigate(['actualizar-empresa', id]);
   }
 
+  verDetallesDeEmpresa(id:number){
+    this.router.navigate(['detalles-empresa', id]);
+  }
 }
