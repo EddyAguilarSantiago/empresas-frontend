@@ -16,8 +16,8 @@
     <form (ngSubmit)="onSubmit()" #empresaForm="ngForm">
         <div class="form-floating mb-2">
             <input type="text" class="form-control" id="codigo" name="codigo" [(ngModel)]="empresa.codigo"
-            required placeholder="Codigo" [maxLength]="3" minlength="3" maxlength="3" pattern="[0-9]+" #codigo="ngModel">
-            <label for="codigo">Codigo</label>
+            required placeholder="Código" minlength="3" maxlength="3" pattern="[0-9]+" #codigo="ngModel">
+            <label for="codigo">Código</label>
 
             <!-- Mensajes de error en el código -->
             <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
