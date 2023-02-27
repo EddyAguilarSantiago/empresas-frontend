@@ -1,1 +1,40 @@
-<p>lista-usuarios works!</p>
+<div class="container p-4 border mt-4 mb-4 products target">
+    <h3 class="text-center mb-5">Lista de Empresas</h3>
+
+    <!-- Si ocurre algún error -->
+    <div *ngFor="let error of errors">
+        <div class="alert alert-danger" *ngIf="error!=null" role="alert">
+            {{ error }}
+        </div>
+    </div>
+
+    <!-- Si no hay usuarios registrados -->
+    <div *ngIf="numUsuarios==0">
+        No hay ninguna empresa registrada
+    </div>
+    <!-- En caso de que si haya -->
+    <div *ngIf="numUsuarios==0; else elseBlock"></div>
+    <!-- Para cada usuario registrado -->
+    <ng-template #elseBlock>
+        <div class="row pr-2 mb-4 border target-elements" *ngFor="let usuario of usuarios">
+            <div class="col-sm-2 d-flex align-items-center mb-2">
+                <a routerLink="/detalles-empresa/{{ usuario['eempresa'].id }}">{{ usuario['eempresa'].nombre }}</a>
+            </div>
+            <div class="col-sm-2 d-flex align-items-center mb-2">
+                <a routerLink="/detalles-usuario/{{ usuario.id }}">{{ usuario.codigo }}</a>
+            </div>
+            <div class="col-sm-3 d-flex align-items-center mb-2">
+                <a routerLink="/actualizar-usuario/{{ usuario.id }}">{{ usuario.nombre }}</a>
+            </div>
+            <div class="col-sm-3 d-flex align-items-center mb-2">
+                {{ usuario.email }}
+            </div>
+            <div class="col-sm-2 d-flex align-items-center justify-content-center mt-4 mb-4">
+                <!-- <button (click)="eliminarUsuario(usuario.id)" class="btn btn-danger">Eliminar</button> -->
+            </div>
+        </div>
+    </ng-template>
+    <div class="d-flex justify-content-center mt-5">
+        <!-- <a routerLink="/registrar-usuario" class="btn btn-primary">Añadir usuario</a> -->
+    </div>
+</div>
