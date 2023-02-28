@@ -33,15 +33,6 @@ export class ListaEmpresasComponent implements OnInit {
     }, 5000);
   }
 
-  actualizarEmpresa(id:number){
-    this.router.navigate(['actualizar-empresa', id]);
-  }
-
-  verDetallesDeEmpresa(id:number){
-    this.router.navigate(['detalles-empresa', id]);
-  }
-
-
   eliminarEmpresa(id:number){
     swal({
       title: '¿Estás seguro?',
