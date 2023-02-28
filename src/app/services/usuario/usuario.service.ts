@@ -32,4 +32,9 @@ export class UsuarioService {
   actualizarUsuario(id:number, usuario:Usuario):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`, usuario);
   }
+
+  //Método para eliminar usuario
+  eliminarUsuario(id:number):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
 }
