@@ -17,7 +17,6 @@ export class RegistrarUsuarioComponent implements OnInit {
   numEmpresas;
   success:string;
   errors=[];
-  valido:Boolean=false;
 
   constructor(private usuarioService:UsuarioService, private empresaService:EmpresaService, private router:Router) { }
 
@@ -49,12 +48,12 @@ export class RegistrarUsuarioComponent implements OnInit {
     }
 
     //Vaciamos los campos del formulario
-    // this.usuario.id_empresa = null;
-    // this.usuario.codigo = null;
-    // this.usuario.nombre = null;
-    // this.usuario.email = null;
+    this.usuario.empresa = null;
+    this.usuario.codigo = null;
+    this.usuario.nombre = null;
+    this.usuario.email = null;
 
-    //Vaciamos las variables errors, success y válido luego de 5 segundos
+    //Vaciamos las variables errors success luego de 5 segundos
     setTimeout(() => {
       this.success=null;
       this.errors=[];
