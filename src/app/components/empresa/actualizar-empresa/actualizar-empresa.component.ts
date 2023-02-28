@@ -46,12 +46,6 @@ export class ActualizarEmpresaComponent implements OnInit {
       }, error => this.errors.push(error.message));
     }
 
-    //Vaciamos los campos del formulario
-    this.empresa.codigo = null;
-    this.empresa.nombre = null;
-    this.empresa.direccion = null;
-    this.empresa.cp = null;
-
     //Vaciamos las variables errors y success luego de 5 segundos
     setTimeout(() => {
       this.success=null;
