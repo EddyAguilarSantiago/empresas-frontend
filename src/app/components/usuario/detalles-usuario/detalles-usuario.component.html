@@ -1,1 +1,37 @@
-<p>detalles-usuario works!</p>
+<div class="container mw-500 border p-4 mt-4 mb-4 target">
+    <h3 class="text-center mb-4">Detalles del Usuario</h3>
+
+    <!-- Si ocurre algún error -->
+    <div *ngFor="let error of errors">
+        <div class="alert alert-danger" *ngIf="error!=null" role="alert">
+            {{ error }}
+        </div>
+    </div>
+
+    <!-- Si no hay usuarios registrados -->
+    <div *ngIf="usuario.id==null">
+        No existe ningún usuario con el id <strong>{{ id }}</strong>
+    </div>
+    <!-- En caso de que si haya -->
+    <div *ngIf="usuario.id==null; else elseBlock"></div>
+    <!-- Para cada usuario registrado -->
+    <ng-template #elseBlock>
+        <div>
+            <div class="mb-2">
+                <label><b>ID: </b>{{ usuario.id }}</label>
+            </div>
+            <div class="mb-2">
+                <label><b>Código: </b>{{ usuario.codigo }}</label>
+            </div>
+            <div class="mb-2">
+                <label><b>Nombre: </b>{{ usuario.nombre }}</label>
+            </div>
+            <div>
+                <label><b>Dirección de Correo Electrónico: </b>{{ usuario.email }}</label>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <a routerLink="/actualizar-usuario/{{usuario.id}}" class="btn btn-primary">Editar usuario</a>
+            </div>
+        </div>
+    </ng-template>
+</div>

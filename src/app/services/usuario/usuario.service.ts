@@ -22,4 +22,9 @@ export class UsuarioService {
   registrarUsuario(usuario: Usuario):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`, usuario);
   }
+
+  //Método para buscar usuario
+  obtenerUsuarioPorId(id:number):Observable<Usuario>{
+    return this.httpClient.get<Usuario>(`${this.baseURL}/${id}`);
+  }
 }
