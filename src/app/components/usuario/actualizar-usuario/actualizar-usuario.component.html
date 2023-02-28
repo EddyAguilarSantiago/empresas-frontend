@@ -46,7 +46,7 @@
 
         <div class="form-floating mb-2">
             <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuario.email"
-            required placeholder="Dirección de Correo Electrónico" minlength="3" maxlength="70" #email="ngModel" pattern="">
+            required placeholder="Dirección de Correo Electrónico" minlength="3" maxlength="70" #email="ngModel" pattern="^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$">
             <label for="email">Dirección de Correo Electrónico</label>
 
             <!-- Mensajes de error en la dirección -->
@@ -56,6 +56,9 @@
                 </h6>
                 <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "email.errors.maxlength">
                     La dirección de Correo Electrónico del usuario debe tener un máximo de 70 caracteres
+                </h6>
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "email.errors.pattern">
+                    La dirección de Correo Electrónico no es válida
                 </h6>
             </div>
         </div>

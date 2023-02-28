@@ -26,9 +26,6 @@ export class ActualizarEmpresaComponent implements OnInit {
 
   onSubmit(){
     //Validaciones
-    if(this.empresa.codigo==null){
-      this.errors.push("El código de la empresa es requerido");
-    }
     if(this.empresa.nombre==null){
       this.errors.push("El nombre de la empresa es requerido");
     }

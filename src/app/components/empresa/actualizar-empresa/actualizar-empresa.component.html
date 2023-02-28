@@ -16,21 +16,8 @@
     <form (ngSubmit)="onSubmit()" #empresaForm="ngForm">
         <div class="form-floating mb-2">
             <input type="text" class="form-control" id="codigo" name="codigo" [(ngModel)]="empresa.codigo"
-            required placeholder="Codigo" [maxLength]="3" minlength="3" maxlength="3" pattern="[0-9]+" #codigo="ngModel">
+            disabled placeholder="Codigo">
             <label for="codigo">Codigo</label>
-
-            <!-- Mensajes de error en el código -->
-            <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
-                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.minlength">
-                    El código de la empresa debe ser de 3 dígitos
-                </h6>
-                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.maxlength">
-                    El código de la empresa debe ser de 3 dígitos
-                </h6>
-                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.pattern">
-                    El código de la empresa sólo debe tener números
-                </h6>
-            </div>
         </div>
 
         <div class="form-floating mb-2">
@@ -51,7 +38,7 @@
 
         <div class="form-floating mb-2">
             <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="empresa.direccion"
-            required placeholder="Dirección" minlength="3" maxlength="70" #direccion="ngModel">
+            required placeholder="Dirección" minlength="3" maxlength="70" pattern="(([A-ZÁÉÍÓÚÑ]+[a-záéíóúñ]*)+(((([A-ZÁÉÍÓÚÑ]*[a-záéíóúñ]*)+)|([0-9]+))* )+#[0-9]+)" #direccion="ngModel">
             <label for="direccion">Dirección</label>
 
             <!-- Mensajes de error en la dirección -->
@@ -61,6 +48,9 @@
                 </h6>
                 <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "direccion.errors.maxlength">
                     La dirección de la empresa debe tener un máximo de 70 caracteres
+                </h6>
+                <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "direccion.errors.pattern">
+                    La dirección de la empresa no es válida
                 </h6>
             </div>
         </div>
