@@ -5,6 +5,7 @@ import { DetallesEmpresaComponent } from './components/empresa/detalles-empresa/
 import { ListaEmpresasComponent } from './components/empresa/lista-empresas/lista-empresas.component';
 import { RegistrarEmpresaComponent } from './components/empresa/registrar-empresa/registrar-empresa.component';
 import { ListaUsuariosComponent } from './components/usuario/lista-usuarios/lista-usuarios.component';
+import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuario/registrar-usuario.component';
 
 const routes: Routes = [
   {path: 'empresas', component:ListaEmpresasComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path : 'actualizar-empresa/:id',component : ActualizarEmpresaComponent},
   {path : 'detalles-empresa/:id',component : DetallesEmpresaComponent},
   {path: 'usuarios', component:ListaUsuariosComponent},
+  {path: 'registrar-usuario', component:RegistrarUsuarioComponent}
 ];
 
 @NgModule({

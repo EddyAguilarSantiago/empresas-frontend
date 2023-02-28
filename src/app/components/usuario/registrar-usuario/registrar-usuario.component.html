@@ -1,1 +1,88 @@
-<p>registrar-usuario works!</p>
+<div class="container mw-500 border p-4 mt-4 mb-4 target">
+    <h3 class="text-center mb-4">Registro de usuario</h3>
+
+    <!-- Si sale bien el registro -->
+    <div class="alert alert-success" *ngIf="success!=null" role="alert">
+        {{ success }}
+    </div>
+    
+    <!-- Si ocurre algún error -->
+    <div *ngFor="let error of errors">
+        <div class="alert alert-danger" *ngIf="error!=null" role="alert">
+            {{ error }}
+        </div>
+    </div>
+
+    <div *ngIf="numEmpresas==0">
+        No hay ninguna empresa registrada, registra alguna para poder registrar usuarios
+    </div>
+    <!-- En caso de que si haya -->
+    <div *ngIf="numEmpresas==0; else elseBlock"></div>
+    <!-- Para cada empresa registrada -->
+    <ng-template #elseBlock>
+        <div class="form-floating mb-2">
+            <select class="form-select" id="id_empresa" name="empresa" [(ngModel)]="usuario.empresa">
+                <option [ngValue]="undefined">Elegir</option>
+                <option *ngFor="let empresa of empresas" [ngValue]="empresa">{{ empresa.nombre }}</option>
+            </select>
+            <label for="empresa" class="form-label">Empresa</label>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm"><!-- Si no hay empresas registradas -->
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="codigo" name="codigo" [(ngModel)]="usuario.codigo"
+                required placeholder="Código" minlength="5" maxlength="5" pattern="[0-9]+" #codigo="ngModel">
+                <label for="codigo">Código</label>
+
+                <!-- Mensajes de error en el código -->
+                <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.minlength">
+                        El código del usuario debe ser de 5 dígitos
+                    </h6>
+                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.maxlength">
+                        El código del usuario debe ser de 5 dígitos
+                    </h6>
+                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.pattern">
+                        El código del usuario sólo debe tener números
+                    </h6>
+                </div>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuario.nombre"
+                required placeholder="Nombre" minlength="3" maxlength="50" #nombre="ngModel">
+                <label for="nombre">Nombre</label>
+
+                <!-- Mensajes de error en el nombre -->
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "nombre.errors.minlength">
+                        El nombre del usuario debe ser de al menos 3 caracteres
+                    </h6>
+                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "nombre.errors.maxlength">
+                        El nombre del usuario debe tener un máximo de 50 caracteres
+                    </h6>
+                </div>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuario.email"
+                required placeholder="Dirección de Correo Electrónico" minlength="3" maxlength="70" #email="ngModel" pattern="">
+                <label for="email">Dirección de Correo Electrónico</label>
+
+                <!-- Mensajes de error en la dirección -->
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "email.errors.minlength">
+                        La dirección de Correo Electrónico del usuario debe ser de al menos 3 caracteres
+                    </h6>
+                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "email.errors.maxlength">
+                        La dirección de Correo Electrónico del usuario debe tener un máximo de 70 caracteres
+                    </h6>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <button class="btn btn-success">Registrar usuario</button>
+                <!-- <button class="btn btn-success" [disabled]="!empresaForm.form.valid">Registrar empresa</button> -->
+            </div>
+        </form>
+    </ng-template>
+</div>

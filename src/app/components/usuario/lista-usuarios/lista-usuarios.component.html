@@ -18,7 +18,7 @@
     <ng-template #elseBlock>
         <div class="row pr-2 mb-4 border target-elements" *ngFor="let usuario of usuarios">
             <div class="col-sm-2 d-flex align-items-center mb-2">
-                <a routerLink="/detalles-empresa/{{ usuario['eempresa'].id }}">{{ usuario['eempresa'].nombre }}</a>
+                <a routerLink="/detalles-empresa/{{ usuario.empresa.id }}">{{ usuario.empresa.nombre }}</a>
             </div>
             <div class="col-sm-2 d-flex align-items-center mb-2">
                 <a routerLink="/detalles-usuario/{{ usuario.id }}">{{ usuario.codigo }}</a>
@@ -35,6 +35,6 @@
         </div>
     </ng-template>
     <div class="d-flex justify-content-center mt-5">
-        <!-- <a routerLink="/registrar-usuario" class="btn btn-primary">Añadir usuario</a> -->
+        <a routerLink="/registrar-usuario" class="btn btn-primary">Añadir usuario</a>
     </div>
 </div>
