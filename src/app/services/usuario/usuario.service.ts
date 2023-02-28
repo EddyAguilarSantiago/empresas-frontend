@@ -27,4 +27,9 @@ export class UsuarioService {
   obtenerUsuarioPorId(id:number):Observable<Usuario>{
     return this.httpClient.get<Usuario>(`${this.baseURL}/${id}`);
   }
+
+  //Método para actualizar usuario
+  actualizarUsuario(id:number, usuario:Usuario):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/${id}`, usuario);
+  }
 }
