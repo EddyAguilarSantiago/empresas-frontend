@@ -10,15 +10,17 @@ import { ListaUsuariosComponent } from './components/usuario/lista-usuarios/list
 import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuario/registrar-usuario.component';
 
 const routes: Routes = [
-  {path: 'empresas', component:ListaEmpresasComponent},
   {path: '', redirectTo : 'empresas', pathMatch : 'full'},
+  
+  {path: 'empresas', component:ListaEmpresasComponent},
   {path: 'registrar-empresa', component:RegistrarEmpresaComponent},
-  {path : 'actualizar-empresa/:id',component : ActualizarEmpresaComponent},
-  {path : 'detalles-empresa/:id',component : DetallesEmpresaComponent},
+  {path: 'detalles-empresa/:id',component : DetallesEmpresaComponent},
+  {path: 'actualizar-empresa/:id',component : ActualizarEmpresaComponent},
+
   {path: 'usuarios', component:ListaUsuariosComponent},
   {path: 'registrar-usuario', component:RegistrarUsuarioComponent},
   {path: 'detalles-usuario/:id', component:DetallesUsuarioComponent},
-  {path: 'actualizar-usuario/:id', component:ActualizarUsuarioComponent}
+  {path: 'actualizar-usuario/:id', component:ActualizarUsuarioComponent},
 ];
 
 @NgModule({
