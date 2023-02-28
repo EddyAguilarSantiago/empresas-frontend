@@ -55,8 +55,8 @@ export class ListaEmpresasComponent implements OnInit {
             'La empresa ha sido eliminada con éxito',
             'success'
           )
-        })
+        }, error => this.errors.push(error.message));
       }
-    })
+    });
   }
 }

@@ -55,8 +55,8 @@ export class ListaUsuariosComponent implements OnInit {
             'El usuario ha sido eliminado con éxito',
             'success'
           )
-        })
+        }, error => this.errors.push(error.message));
       }
-    })
+    });
   }
 }
