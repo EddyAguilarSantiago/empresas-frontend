@@ -11,6 +11,7 @@ import { ActualizarEmpresaComponent } from './components/empresa/actualizar-empr
 import { DetallesEmpresaComponent } from './components/empresa/detalles-empresa/detalles-empresa.component';
 import { ListaUsuariosComponent } from './components/usuario/lista-usuarios/lista-usuarios.component';
 import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuario/registrar-usuario.component';
+import { DetallesUsuarioComponent } from './components/usuario/detalles-usuario/detalles-usuario.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuari
     ActualizarEmpresaComponent,
     DetallesEmpresaComponent,
     ListaUsuariosComponent,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    DetallesUsuarioComponent
   ],
   imports: [
     BrowserModule,
