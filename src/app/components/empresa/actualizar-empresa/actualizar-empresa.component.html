@@ -38,7 +38,7 @@
 
         <div class="form-floating mb-2">
             <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="empresa.direccion"
-            required placeholder="Dirección" minlength="3" maxlength="70" pattern="(([A-ZÁÉÍÓÚÑ]+[a-záéíóúñ]*)+(((([A-ZÁÉÍÓÚÑ]*[a-záéíóúñ]*)+)|([0-9]+))* )+#[0-9]+)" #direccion="ngModel">
+            required placeholder="Dirección" minlength="3" maxlength="70" pattern="((((([A-ZÁÉÍÓÚÑ]+[a-záéíóúñ]+)+)|([0-9]+))+ )+(((([A-ZÁÉÍÓÚÑa-záéíóúñ]+)+)|([0-9]+))+ )*#[0-9]+)" #direccion="ngModel">
             <label for="direccion">Dirección</label>
 
             <!-- Mensajes de error en la dirección -->
