@@ -32,6 +32,13 @@ export class RegistrarUsuarioComponent implements OnInit {
     if(this.usuario.codigo==null){
       this.errors.push("El código del usuario es requerido");
     }
+    else{
+      //Si ya se seleccionó empresa
+      if(this.usuario.empresa!=null){
+        //Concatenamos el código de la empresa con los dos digitos del usuario
+        this.usuario.codigo = this.usuario.empresa.codigo + this.usuario.codigo;
+      }
+    } 
     if(this.usuario.nombre==null){
       this.errors.push("El nombre del usuario es requerido");
     }
@@ -48,7 +55,7 @@ export class RegistrarUsuarioComponent implements OnInit {
     }
 
     //Vaciamos los campos del formulario
-    this.usuario.empresa = null;
+    this.usuario.empresa = undefined;
     this.usuario.codigo = null;
     this.usuario.nombre = null;
     this.usuario.email = null;

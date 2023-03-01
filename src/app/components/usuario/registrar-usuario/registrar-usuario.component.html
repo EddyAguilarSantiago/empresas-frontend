@@ -27,24 +27,30 @@
             </select>
             <label for="empresa" class="form-label">Empresa</label>
         </div>
-
+        
         <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm"><!-- Si no hay empresas registradas -->
-            <div class="form-floating mb-2">
-                <input type="text" class="form-control" id="codigo" name="codigo" [(ngModel)]="usuario.codigo"
-                required placeholder="Código" minlength="5" maxlength="5" pattern="[0-9]+" #codigo="ngModel">
-                <label for="codigo">Código</label>
-
-                <!-- Mensajes de error en el código -->
-                <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
-                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.minlength">
-                        El código del usuario debe ser de 5 dígitos
-                    </h6>
-                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.maxlength">
-                        El código del usuario debe ser de 5 dígitos
-                    </h6>
-                    <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.pattern">
-                        El código del usuario sólo debe tener números
-                    </h6>
+            <div class="mb-2">
+                <div class="input-group">
+                    <span class="input-group-text" *ngIf="usuario.empresa != null">{{ usuario.empresa.codigo }}</span>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="codigo" name="codigo" [(ngModel)]="usuario.codigo"
+                        required placeholder="Código" minlength="2" maxlength="2" pattern="[0-9]+" #codigo="ngModel">
+                        <label for="codigo">Código</label>
+                    </div>
+                </div>
+                
+                <div>
+                    <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+                        <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.minlength">
+                            El código del usuario debe ser de 5 dígitos
+                        </h6>
+                        <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.maxlength">
+                            El código del usuario debe ser de 5 dígitos
+                        </h6>
+                        <h6 class="alert alert-danger mt-1 mb-1" *ngIf = "codigo.errors.pattern">
+                            El código del usuario sólo debe tener números
+                        </h6>
+                    </div>
                 </div>
             </div>
 
