@@ -75,11 +75,9 @@ export class ListaEmpresasComponent implements OnInit {
           //Verificamos si el usuario actual es parte de la empresa que se va a eliminar
           if(usuario.empresa.id == id){
             //Eliminamos el usuario
-            console.log("Eliminar usuario con id: "+id);
             this.usuarioService.eliminarUsuario(usuario.id).subscribe(usuario => {}, error => this.errors.push(error.message));
           }
         }
-        console.log("Eliminar empresa");
         //Eliminamos la empresa
         setTimeout(() => {
           this.empresaService.eliminarEmpresa(id).subscribe(empresa => {
